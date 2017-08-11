@@ -2,6 +2,8 @@ package CQLConnect
 
 import java.util.Date
 
+import com.weather.scalacass.ScalaSession
+
 
 object Models {
 

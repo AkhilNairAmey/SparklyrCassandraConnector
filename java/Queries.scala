@@ -1,5 +1,7 @@
 package CQLConnect
 
+import com.weather.scalacass.ScalaSession
+
 object Queries {
 
   def previous_poll_query( keyspace: String , table: String ) : String = {
@@ -25,6 +27,7 @@ object Queries {
          |  actual_loop_id=? AND
          |  time<=?
          |  LIMIT 1""".stripMargin
+
     previous_poll_query
 
   }
