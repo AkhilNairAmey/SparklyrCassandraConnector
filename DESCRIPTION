@@ -8,7 +8,8 @@ Authors@R: c(
 Maintainer: Akhil Nair <akhil.nair@amey.co.uk>
 Description: This is not a generic package currently - It queries a single row
     from a specific data model as this is the only functionality I required. A 
-    more generic package requires more skill with Scala than I have...
+    more generic package requires introspection to infer model classes and a way
+    to send the scala equivalent of dataframes back to R 
 License: MIT LICENSE
 LazyData: TRUE
 Depends:
@@ -21,7 +22,8 @@ Suggests:
     testthat
 RoxygenNote: 6.0.1
 Collate: 
-    'cql_session.R'
+    'connection_manager.R'
+    'count.R'
     'dependencies.R'
     'utils.R'
     'previous_poll.R'
