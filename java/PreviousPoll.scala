@@ -23,8 +23,8 @@ object PreviousPoll {
   }
 
   def get_poll_row( session:ScalaSession, query:String, str_date:String, int_vhid:Int, int_loop_id:Int, str_time:String ) : Array[Any] = {
-    // Query cassandra to get the row
-    val aRow: Iterator[Row] = query_poll_row(session, query:String, str_date, int_vhid, int_loop_id, str_time)  // LIMIT 1 query, select next
+    // Query cassandra to get the row, converting R values to Cassandra mappable classes
+    val aRow: Iterator[Row] = query_poll_row(session, query, str_date, int_vhid, int_loop_id, str_time)  // LIMIT 1 query, select next
     // If there is no row, return an empty array
     if(aRow.isEmpty) { return(Array():Array[Any]) }
     // If a row exists, puts the row into a model

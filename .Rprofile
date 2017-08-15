@@ -1,3 +1,5 @@
+options(error = NULL)
+
 # Set Scala version
 Sys.setenv("SCALA_VERSION" = "2.11")
 Sys.setenv("SCALA_VERSION_MINOR" = ".8")

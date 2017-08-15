@@ -13,8 +13,10 @@ Description: This is not a generic package currently - It queries a single row
 License: MIT LICENSE
 LazyData: TRUE
 Depends:
-    R (>= 3.1.2)
+    R (>= 3.4.1)
 Imports:
+    sparklyr (>= 0.6.1),
+    stringr,
     rprojroot,
     digest
 Remotes: rstudio/sparklyr
@@ -26,4 +28,5 @@ Collate:
     'count.R'
     'dependencies.R'
     'utils.R'
+    'file_index.R'
     'previous_poll.R'
