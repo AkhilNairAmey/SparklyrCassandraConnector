@@ -1,15 +1,14 @@
 Package: CQLConnect
 Type: Package
 Title: CQLConnect - Dispatch cql to query a Cassandra database via scala
-Version: 2.0.0
+Version: 2.1.0
 Authors@R: c(
     person("Akhil", "Nair", email = "akhil.nair@amey.co.uk", role = c("aut", "cre"))
     )
 Maintainer: Akhil Nair <akhil.nair@amey.co.uk>
-Description: This is not a generic package currently - It queries a single row
-    from a specific data model as this is the only functionality I required. A 
-    more generic package requires introspection to infer model classes and a way
-    to send the scala equivalent of dataframes back to R 
+Description: This package shows how to submit raw queries to a 
+    cassandra database and receive replies.  The database models
+    being queried must be specified via custom Scala
 License: MIT LICENSE
 LazyData: TRUE
 Depends:

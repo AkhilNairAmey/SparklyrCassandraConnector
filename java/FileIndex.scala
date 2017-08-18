@@ -16,10 +16,12 @@ object FileIndex {
     val keyspace = session.keyspace
 
     val query =
-      s"""SELECT DISTINCT
-         |  analysed, date
-         |FROM $keyspace.mv_file_index
-         |""".stripMargin
+      s"""SELECT
+         |  analysed,
+         |  date,
+         |  file_name,
+         |  state
+         |FROM $keyspace.mv_file_index""".stripMargin
 
     session.rawSelect(query)
 

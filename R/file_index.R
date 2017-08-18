@@ -42,9 +42,30 @@ cql_hasnext <- function(sc, iterator) {
 
 #' Exhaust file_index row iterator to get whole file_index
 #'
+#' @import data.table
 #' @include utils.R
 #' @export
 cql_get_file_index <- function(sc, session) {
+
+  # Table count to preallocate memory for the iterator
+  n = cql_count(sc, session, "mv_file_index")
+
+  # Iterator of a table row
   iterator = cql_get_file_index_row(sc, session)
-  lapply(1:2, function(i) sparklyr::invoke_static(sc, "CQLConnect.FileIndex", "get_dist_file_index", iterator))
+
+  # Exhaust the iterator through a map
+  dtl = lapply(seq_along(1:n), function(i) {
+    sparklyr::invoke_static(sc, "CQLConnect.FileIndex", "get_dist_file_index", iterator)
+  })
+
+  # Transpose the nested list and set as a data.table
+  dt = split(unlist(dtl, use.names = FALSE), c("analysed", "date", "file_name", "state"))
+  data.table::setDT(dt)
+
+  # Some casting which could be avoided if not for unlist
+  dt[, analysed := as.logical(analysed)]
+  dt[, date := as.Date(as.numeric(date), origin = "1970-01-01")]
+
+  # Call [.data.table so function returns an object
+  dt[]
 }

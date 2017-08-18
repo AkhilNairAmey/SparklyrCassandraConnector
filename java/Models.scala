@@ -29,7 +29,9 @@ object Models {
 
   case class DistMVFileIndexModel(
                         analysed: Boolean,
-                        date:     LocalDate
+                        date:     LocalDate,
+                        file_name: String,
+                        state: String
                       )
 
   def extract_poll_values(e: PollModel): Array[Any] = e.productIterator.map {
