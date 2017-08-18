@@ -3,6 +3,7 @@ package CQLConnect
 import com.datastax.driver.core.Cluster
 import com.weather.scalacass.ScalaSession
 
+
 object Connection {
 
   def cql_cluster_connect( cl:String ) : Cluster = {
